@@ -1,0 +1,33 @@
+# URL : http://localhost:3000/
+
+# Account
+#     {{URL}}/api/v1/account
+#     {{URL}}/api/v1/account/:id
+#     {{URL}}/api/v1/account/add
+#     {{URL}}/api/v1/account/edit/:id
+#     {{URL}}/api/v1/account/delete/:id
+# Comic
+#     {{URL}}/api/v1/comic
+#     {{URL}}/api/v1/comic/:id
+#     {{URL}}/api/v1/comic/add
+#     {{URL}}/api/v1/comic/edit/:id
+#     {{URL}}/api/v1/comic/delete/:id
+# Chapter
+#     {{URL}}/api/v1/chapter
+#     {{URL}}/api/v1/chapter/:id
+#     {{URL}}/api/v1/chapter/add
+#     {{URL}}/api/v1/chapter/edit/:id
+#     {{URL}}/api/v1/chapter/delete/:id
+# Rate
+#     {{URL}}/api/v1/rate
+#     {{URL}}/api/v1/rate/:id
+#     {{URL}}/api/v1/rate/add
+#     {{URL}}/api/v1/rate/edit/:id
+#     {{URL}}/api/v1/rate/delete/:id
+# Comment
+#     {{URL}}/api/v1/comment
+#     {{URL}}/api/v1/comment/:id
+#     {{URL}}/api/v1/comment/add
+#     {{URL}}/api/v1/comment/edit/:id
+#     {{URL}}/api/v1/comment/delete/:id
+

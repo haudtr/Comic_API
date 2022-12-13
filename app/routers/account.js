@@ -4,6 +4,7 @@ const router = express.Router();
 const controllerName = 'account'
 const MainModel = require(__path_models + controllerName)
 
+
 router.get('/', async (req, res, next) =>{
   try {
     const data = await MainModel.listItems({},{'task':'all'})
