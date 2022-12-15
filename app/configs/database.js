@@ -8,4 +8,5 @@ module.exports = {
     col_chapter:'chapter',
     col_rate:'rate',
     col_comment:'comment',
+    col_favorite:'favorite',
 }
