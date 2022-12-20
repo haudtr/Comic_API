@@ -21,10 +21,7 @@ router.get('/', async (req, res, next) =>{
 router.get('/comic/:idTruyen', async (req, res, next) =>{
     try {
       const data = await MainModel.listItems({'id':req.params.idTruyen},{'task':'truyen'})
-      res.status(200).json({
-        success:true,
-        data:data
-      })
+      res.status(200).json(data)
     } catch (error) {
       res.status(400).json({
         success:false
@@ -52,6 +49,7 @@ router.post('/add', async (req, res, next) => {
     let params = []
     params.id = makeID(8)
     params.maDocGia = req.body.maDocGia
+    params.avtDocGia = req.body.avtDocGia
     params.maTruyen = req.body.maTruyen
     params.rate = req.body.rate
     params.noiDung = req.body.noiDung

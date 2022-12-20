@@ -11,6 +11,10 @@ module.exports ={
             return MainModel
                 .find({id:params.id})
                 .select('id tenTruyen tacGia nhanVatChinh moTa anhDaiDien anhBia luocXem status')
+        else if(option.task === 'top')
+            return MainModel
+                .find().sort({luocXem:-1}).limit(5)
+                .select('id tenTruyen tacGia nhanVatChinh moTa anhDaiDien anhBia luocXem status')
     },
     deleteItems:(params,option)=>{
         if(option.task === "one")

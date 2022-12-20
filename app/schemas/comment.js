@@ -6,6 +6,6 @@ const schema = new mongoose.Schema({
     maDocGia:String,
     maTap:String,
     noiDung:String,
-    ngayBinhLuan:String,
+    ngayBinhLuan:{ type: Date, required: true, default: Date.now }
 })
 module.exports = mongoose.model(databaseConfig.col_comment,schema)

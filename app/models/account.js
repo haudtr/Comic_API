@@ -5,12 +5,16 @@ module.exports ={
         if(option.task === 'all'){
             return MainModel
                 .find({})
-                .select('id tendn email password phoneNumber')
+                .select('id email password phoneNumber avatar tenUser')
         }
         else if(option.task === 'one')
             return MainModel
                 .find({id:params.id})
-                .select('id tendn email password phoneNumber')
+                .select('id email password phoneNumber avatar tenUser')
+        else if(option.task === 'email')
+            return MainModel
+                .find({email:params.email})
+                .select('id email password phoneNumber avatar tenUser')
     },
     deleteItems:(params,option)=>{
         if(option.task === "one")
@@ -24,5 +28,10 @@ module.exports ={
     },
     create: (item) =>{
         return new MainModel(item).save()
+    },
+    login: (email,password) =>{
+        return MainModel
+                .findOne({email:email,password:password})
+                .select('email')
     }
 }

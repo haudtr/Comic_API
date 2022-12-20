@@ -9,7 +9,7 @@ const schema = new mongoose.Schema({
     moTa:String,
     anhDaiDien:String,
     anhBia:String,
-    luocXem:String,
+    luocXem:Number,
     status:String
 })
 module.exports = mongoose.model(databaseConfig.col_comic,schema)

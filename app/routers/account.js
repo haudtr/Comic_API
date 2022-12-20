@@ -34,14 +34,27 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.get('/user/:email', async (req, res, next) => {
+  try {
+    const data = await MainModel.listItems({'email':req.params.email},{'task':'email'})
+    res.status(200).json(data)
+
+  } catch (error) {
+    res.status(400).json({
+      success:false
+    })
+  }
+});
+
 router.post('/add', async (req, res, next) => {
   try {
     let params = []
     params.id = makeID(8)
-    params.tendn = req.body.tendn
     params.email = req.body.email
     params.password = req.body.password
     params.phoneNumber = req.body.phoneNumber
+    params.avatar = req.body.avatar
+    params.tenUser = req.body.tenUser
 
     const data = await MainModel.create(params)
 
@@ -55,6 +68,23 @@ router.post('/add', async (req, res, next) => {
     })
   }
 });
+
+router.post('/login', async (req,res,next)=>{
+  try {
+    var email = req.body.email;
+    var password = req.body.password;
+
+    const data = await MainModel.login(email,password)
+
+    if(data.email==email) res.status(200).json('Đăng nhập thành công')
+    else res.status(300).json('Đăng nhập thất bại')
+
+  } catch (error) {
+    res.status(400).json({
+      success:false
+    })
+  }
+})
 
 router.put('/edit/:id', async (req, res, next) => {
   try {
@@ -88,6 +118,13 @@ router.delete('/delete/:id',async (req,res,next)=>{
   }
 })
 module.exports = router;
+
+
+
+
+
+
+
 
 makeID = (number)=> {
   var text = ""
