@@ -18,26 +18,20 @@ router.get('/', async (req, res, next) =>{
   }
 });
 
-router.get('/comic/:idTruyen', async (req, res, next) =>{
+router.get('/comic/:maTruyen', async (req, res, next) =>{
     try {
-      const data = await MainModel.listItems({'id':req.params.idTap},{'task':'truyen'})
-      res.status(200).json({
-        success:true,
-        data:data
-      })
+      const data = await MainModel.listItems({'maTruyen':req.params.maTruyen},{'task':'Truyen'})
+      res.status(200).json(data)
     } catch (error) {
       res.status(400).json({
         success:false
       })
     }
   });
-router.get('/account/:idDocGia', async (req, res, next) =>{
+router.get('/account/:maDocGia', async (req, res, next) =>{
     try {
-      const data = await MainModel.listItems({'id':req.params.idTap},{'task':'idDocGia'})
-      res.status(200).json({
-        success:true,
-        data:data
-      })
+      const data = await MainModel.listItems({'maDocGia':req.params.maDocGia},{'task':'DocGia'})
+      res.status(200).json(data)
     } catch (error) {
       res.status(400).json({
         success:false
@@ -65,6 +59,7 @@ router.post('/add', async (req, res, next) => {
     params.id = makeID(8)
     params.maDocGia = req.body.maDocGia
     params.maTruyen = req.body.maTruyen
+    params.tenTruyen = req.body.tenTruyen
 
     const data = await MainModel.create(params)
 
@@ -78,7 +73,24 @@ router.post('/add', async (req, res, next) => {
     })
   }
 });
+router.post('/delete/unLike', async (req, res, next) => {
+  try {
+    let params = []
+    params.maDocGia = req.body.maDocGia
+    params.maTruyen = req.body.maTruyen
 
+    const data = await MainModel.deleteItems(params,{'task':'maDocGia'})
+
+    res.status(201).json({
+      success:true,
+      data:data
+  })
+  } catch (error) {
+    res.status(400).json({
+      success:false
+    })
+  }
+});
 router.delete('/delete/:id',async (req,res,next)=>{
   try {
     const data = await MainModel.deleteItems({'id':req.params.id},{'task':'one'})
@@ -93,6 +105,7 @@ router.delete('/delete/:id',async (req,res,next)=>{
     })
   }
 })
+
 module.exports = router;
 
 makeID = (number)=> {
