@@ -5,16 +5,16 @@ module.exports ={
         if(option.task === 'all'){
             return MainModel
                 .find({})
-                .select('id maDocGia maTap noiDung ngayBinhLuan')
+                .select('id maDocGia tenDocGia maTap noiDung ngayBinhLuan')
         }
         else if(option.task === 'one')
             return MainModel
                 .find({id:params.id})
-                .select('id maDocGia maTap noiDung ngayBinhLuan')
+                .select('id maDocGia tenDocGia maTap noiDung ngayBinhLuan')
         else if(option.task === 'tap')
             return MainModel
                 .find({maTap:params.id})
-                .select('id maDocGia maTap noiDung ngayBinhLuan')
+                .select('id maDocGia tenDocGia maTap noiDung ngayBinhLuan')
     },
     deleteItems:(params,option)=>{
         if(option.task === "one")

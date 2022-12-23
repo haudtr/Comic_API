@@ -7,10 +7,8 @@ const MainModel = require(__path_models + controllerName)
 router.get('/', async (req, res, next) =>{
   try {
     const data = await MainModel.listItems({},{'task':'all'})
-    res.status(200).json({
-      success:true,
-      data:data
-    })
+    res.status(200).json(data
+    )
   } catch (error) {
     res.status(400).json({
       success:false
@@ -42,10 +40,8 @@ router.get('/:id', async (req, res, next) => {
   try {
     const data = await MainModel.listItems({'id':req.params.id},{'task':'one'})
 
-    res.status(200).json({
-      success:true,
-      data:data
-  })
+    res.status(200).json(data
+  )
   } catch (error) {
     res.status(400).json({
       success:false

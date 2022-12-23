@@ -7,10 +7,8 @@ const MainModel = require(__path_models + controllerName)
 router.get('/', async (req, res, next) =>{
   try {
     const data = await MainModel.listItems({},{'task':'all'})
-    res.status(200).json({
-      success:true,
-      data:data
-    })
+    res.status(200).json(
+      data)
   } catch (error) {
     res.status(400).json({
       success:false
@@ -21,10 +19,8 @@ router.get('/', async (req, res, next) =>{
 router.get('/comic/:idTruyen', async (req, res, next) =>{
     try {
       const data = await MainModel.listItems({'id':req.params.idTruyen},{'task':'truyen'})
-      res.status(200).json({
-        success:true,
-        data:data
-      })
+      res.status(200).json(
+        data)
     } catch (error) {
       res.status(400).json({
         success:false
@@ -36,10 +32,8 @@ router.get('/:id', async (req, res, next) => {
   try {
     const data = await MainModel.listItems({'id':req.params.id},{'task':'one'})
 
-    res.status(200).json({
-      success:true,
-      data:data
-  })
+    res.status(200).json(
+      data)
   } catch (error) {
     res.status(400).json({
       success:false
@@ -52,6 +46,7 @@ router.post('/add', async (req, res, next) => {
     let params = []
     params.id = makeID(8)
     params.maTruyen = req.body.maTruyen
+    params.tenTruyen = req.body.tenTruyen
     params.tapSo = req.body.tapSo
     params.ten = req.body.ten
     params.ngayDang = req.body.ngayDang

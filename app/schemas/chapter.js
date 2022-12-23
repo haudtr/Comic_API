@@ -6,7 +6,8 @@ const noiDung = []
 const schema = new mongoose.Schema({
     id: String,
     maTruyen:String,
-    tapSo:String,
+    tenTruyen:String,
+    tapSo:Number,
     ten:String,
     ngayDang:String,
     noiDung:[{ anh:String, }]
